@@ -8,11 +8,16 @@ function App() {
 
 const CustomBlur = () => {
 const [blur,setBlur] = useState(0)
-const [imgUrl, setImageUrl] =useState(`${BASE_IMG_URL}?blur=0`)
+const [imgUrl, setImageUrl] =useState({BASE_IMG_URL})
 
 
 useEffect(()=>{
-  setImageUrl(`${BASE_IMG_URL}?blur=${blur}`)
+  if(blur > 0){
+    setImageUrl(`${BASE_IMG_URL}?blur=${blur}`)
+  }else {
+    setImageUrl(BASE_IMG_URL)
+  }
+
 },[blur])
 return (
   <div className="flex flex-col gap-4 p-4 items-center h-screen">
